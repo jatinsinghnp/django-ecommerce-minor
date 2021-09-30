@@ -20,7 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('home.urls',namespace='root'))
+    path('',include('home.urls',namespace='root')),
+    path('store/',include('shop.urls',namespace='store')),
+    path('cart/',include('cart.urls',namespace='cart'))
+
+
 ]
 if settings.DEBUG==True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

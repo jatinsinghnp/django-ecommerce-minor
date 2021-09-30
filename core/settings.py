@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'home.apps.HomeConfig',
     'category.apps.CategoryConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'category.contextprocessor.categorylist',
             ],
         },
     },
@@ -128,11 +130,9 @@ STATICFILES_DIRS = [
 ]
 
 
-
 # media
-MEDIA_URL='/media/'
-MEDIA_ROOT=BASE_DIR /'media'
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
