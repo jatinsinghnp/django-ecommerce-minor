@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'category.apps.CategoryConfig',
     'cart.apps.CartConfig',
+    'accounts.apps.AccountsConfig'
+
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'category.contextprocessor.categorylist',
+
             ],
         },
     },
@@ -130,6 +133,11 @@ STATICFILES_DIRS = [
 ]
 
 
+# custom user model
+
+AUTH_USER_MODEL = 'accounts.ShopUser'
+
+
 # media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -139,3 +147,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True

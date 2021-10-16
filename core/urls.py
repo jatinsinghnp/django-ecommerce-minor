@@ -20,14 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('home.urls',namespace='root')),
-    path('store/',include('shop.urls',namespace='store')),
-    path('cart/',include('cart.urls',namespace='cart'))
+    path('', include('home.urls', namespace='root')),
+    path('store/', include('shop.urls', namespace='store')),
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('accounts/', include('accounts.urls',namespace='registerpage')),
 
 
 ]
-if settings.DEBUG==True:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-
+if settings.DEBUG == True:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

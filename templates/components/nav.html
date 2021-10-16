@@ -29,8 +29,9 @@
 	<div class="container">
 <div class="row align-items-center">
 	<div class="col-lg-2 col-md-3 col-6">
-		<a href="./" class="brand-wrap">
-			<img class="logo" src="{% static 'images/logo.png' %}">
+		<a href="{% url 'root:home' %}" class="brand-wrap">
+			<h2>Rantnapark
+			</h2>
 		</a> <!-- brand-wrap.// -->
 	</div>
 	<div class="col-lg col-sm col-md col-6 flex-grow-0">
@@ -63,17 +64,28 @@
 	</div> <!-- col.// -->
 	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
 				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					
+					{% if request.user.is_authenticated %}
 					<div class="widget-header">
-						<small class="title text-muted">Welcome guest!</small>
+						<small class="title text-muted">{{request.user.name}}</small>
 						<div> 
-							<a href="./signin.html">Sign in</a> <span class="dark-transp"> | </span>
-							<a href="./register.html"> Register</a>
+						<small class="title text-muted">{{ request.user.username }}</small>
+
+							<a href="{% url 'registerpage:logout_user' %}">logout</a>
 						</div>
 					</div>
-					<a href="./cart.html" class="widget-header pl-3 ml-3">
+					<a href="{% url 'cart:cart_page' %}" class="widget-header pl-3 ml-3">
 						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
 						<span class="badge badge-pill badge-danger notify">0</span>
 					</a>
+					{% else %}
+					<div class="widget-header">
+						<div> 
+							<a href="{% url 'registerpage:login' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'registerpage:register' %}"> Register</a>
+						</div>
+					</div>
+					{% endif %}
 				</div> <!-- widgets-wrap.// -->
 			</div> <!-- col.// -->
 </div> <!-- row.// -->
